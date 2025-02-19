@@ -94,7 +94,7 @@ const server = http.createServer((req, res) => {
       res.end();
     } else {
       res.writeHead(400, "not found", { "content-type": "application/json" });
-      res.write(JSON.stringify({ message: "Item isn't available now" }));
+      res.write(JSON.stringify({ message: "Ratledaaa, Don't worry URL lo /Menu ani add chey  " }));
       res.end();
     }
   } else if (req.method == "POST") {
