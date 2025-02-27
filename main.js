@@ -68,33 +68,35 @@ const server = http.createServer((req, res) => {
       res.end();
     } else if (parsedURl.pathname == "/Menu/Veg") {
       const price = 150;
-      const totalPrice = price * quantity;
+      const gst = 0.05;
+      const totalPrice = price * quantity * (1 + gst);
       res.writeHead(200, "ok", { "content-type": "application/json" });
       res.write(JSON.stringify({
         Item: "Gobhi",
         gst: "5%",
         price: price,
-        total_price: totalPrice,
+        total_price: totalPrice.toFixed(2),
         numberofQuantity: quantity,
         Message: "Thank You For Ordering",
       }));
       res.end();
     } else if (parsedURl.pathname == "/Menu/Non-Veg") {
       const price = 350;
-      const totalPrice = price * quantity;
+      const gst = 0.05;
+      const totalPrice = price * quantity * (1 + gst);
       res.writeHead(200, "ok", { "content-type": "application/json" });
       res.write(JSON.stringify({
         Item: "Chicken",
         gst: "5%",
         price: price,
-        total_price: totalPrice,
+        total_price: totalPrice.toFixed(2),
         numberofQuantity: quantity,
         Message: "Thank You For Ordering",
       }));
       res.end();
     } else {
       res.writeHead(400, "not found", { "content-type": "application/json" });
-      res.write(JSON.stringify({ message: "Ratledaaa, Don't worry URL lo /Menu ani add chey  " }));
+      res.write(JSON.stringify({ message: "Item isn't available now" }));
       res.end();
     }
   } else if (req.method == "POST") {
@@ -108,7 +110,7 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen("3101", () => {
+server.listen("3131", () => {
   console.log("server running");
 });
 
